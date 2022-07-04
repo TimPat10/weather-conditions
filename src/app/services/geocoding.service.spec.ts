@@ -51,7 +51,7 @@ describe('GeocodingService', () => {
   //
   // No need to test this now since the geocoding API is being faked.
   //
-  // it(`should make http request for weather forecasts`, () => {
+  // it(`should make http request for weather conditionss`, () => {
   //   expect(req.request.method).toEqual("GET");
   // });
 });

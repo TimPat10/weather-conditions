@@ -19,7 +19,7 @@ Prepare the project:
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-# WeatherForecast
+# Weatherconditions
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.4.
 

@@ -2,29 +2,29 @@ import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@an
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { ICoordinates } from 'src/app/models/iCoordinates';
-import { IWeatherForecast } from 'src/app/models/iWeather-forecast';
-import { WeatherForecastService } from 'src/app/services/weather-forecast.service';
+import { IWeatherCopnditions } from 'src/app/models/iWeather-conditions';
+import { WeatherConditionsService } from 'src/app/services/weather-conditions.service';
 
-import { WeatherForecastComponent } from './weather-forecast.component';
+import { WeatherconditionsComponent } from './weather-conditions.component';
 
-fdescribe('WeatherForecastComponent', () => {
-  let component: WeatherForecastComponent;
-  let fixture: ComponentFixture<WeatherForecastComponent>;
+fdescribe('WeatherconditionsComponent', () => {
+  let component: WeatherconditionsComponent;
+  let fixture: ComponentFixture<WeatherconditionsComponent>;
   let txtCityStateElement: any;
   let btnCityStateGoElement: any;
 
   let req: TestRequest;
   let httpTestingController: HttpTestingController;
-  let returnedForecast: IWeatherForecast;
+  let returnedconditions: IWeatherCopnditions;
 
-  const api: string = "https://someWeatherForecast/api";
+  const api: string = "https://someWeatherconditions/api";
   const coordinates: ICoordinates = {
     latitude: "39.88963102486146",
     longitude: "-84.10662579008196"
   };
 
-  const expectedForecast: IWeatherForecast = { temperature: "78", description: "Sunny" };
-  const weatherForecastServiceSpy = jasmine.createSpyObj('WeatherForecastService', ['getForecastForCoordinates']);
+  const expectedconditions: IWeatherCopnditions = { temperature: "78", description: "Sunny" };
+  const weatherconditionsServiceSpy = jasmine.createSpyObj('WeatherconditionsService', ['getconditionsForCoordinates']);
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -33,13 +33,13 @@ fdescribe('WeatherForecastComponent', () => {
           FormsModule
       ],
       providers: [
-         { provide: WeatherForecastService, useValue: weatherForecastServiceSpy },
+         { provide: WeatherConditionsService, useValue: weatherconditionsServiceSpy },
       ],
-      declarations: [ WeatherForecastComponent ]
+      declarations: [ WeatherconditionsComponent ]
     }).compileComponents().then(() => {
-      fixture = TestBed.createComponent(WeatherForecastComponent);
+      fixture = TestBed.createComponent(WeatherconditionsComponent);
       component = fixture.componentInstance;
-      weatherForecastServiceSpy.getForecastForCoordinates.and.returnValue(expectedForecast);
+      weatherconditionsServiceSpy.getconditionsForCoordinates.and.returnValue(expectedconditions);
 
       txtCityStateElement = fixture.nativeElement.querySelector('[id="txtCityState"]');
       btnCityStateGoElement = fixture.nativeElement.querySelector('[id="btnCityStateGo"');
@@ -53,11 +53,11 @@ fdescribe('WeatherForecastComponent', () => {
     expect(btnCityStateGoElement).toBeTruthy();
   });
 
-  it('should get a forecast for Tipp City, OH when the GO button is clicked', () => {
+  it('should get a conditions for Tipp City, OH when the GO button is clicked', () => {
     txtCityStateElement.textContent = "Tipp City, OH";
     btnCityStateGoElement.click();
 
     fixture.detectChanges();
-    expect(component.forecast).toEqual(expectedForecast);
+    expect(component.currentConditions).toEqual(expectedconditions);
   })
 });

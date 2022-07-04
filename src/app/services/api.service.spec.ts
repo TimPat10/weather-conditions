@@ -18,7 +18,7 @@ describe('ApiService', () => {
     service = TestBed.inject(ApiService);
   });
 
-  it('should return a Weather Forecast API for Latitude / Longitude', () => {
+  it('should return a Weather conditions API for Latitude / Longitude', () => {
     const coordinates: ICoordinates = {
       latitude: "39.88963102486146",
       longitude: "-84.10662579008196"
@@ -27,7 +27,7 @@ describe('ApiService', () => {
     
     const params = `lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=${openWeatherMapKey}`;
     const expectedApi = `${openWeatherMapBaseApi}?${params}`.toLowerCase();
-    const actualApi = service.getForecastByCoordinatesApi(coordinates).toLowerCase();
+    const actualApi = service.getconditionsByCoordinatesApi(coordinates).toLowerCase();
 
     expect(actualApi).toBe(expectedApi);
   });

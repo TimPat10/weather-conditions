@@ -1,4 +1,4 @@
-export interface IWeatherForecast {
+export interface IWeatherCopnditions {
     temperature: string;
     description: string;
 }
