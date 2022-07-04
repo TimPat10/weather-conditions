@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { zip } from 'rxjs';
+import { ICoordinates } from '../models/iCoordinates';
 
 import { ApiService } from './api.service';
 
@@ -17,13 +18,16 @@ describe('ApiService', () => {
     service = TestBed.inject(ApiService);
   });
 
-  it('should return a Weather Forecast API', () => {
-    const latitude = "39.88963102486146";
-    const longitude = "-84.10662579008196";
+  it('should return a Weather Forecast API for Latitude / Longitude', () => {
+    const coordinates: ICoordinates = {
+      latitude: "39.88963102486146",
+      longitude: "-84.10662579008196"
+    };
+
     
-    const params = `lat=${latitude}&lon=${longitude}&apiid=${openWeatherMapKey}`;
+    const params = `lat=${coordinates.latitude}&lon=${coordinates.longitude}&apiid=${openWeatherMapKey}`;
     const expectedApi = `${openWeatherMapBaseApi}?${params}`.toLowerCase();
-    const actualApi = service.getWeatherForecastApi(latitude, longitude).toLowerCase();
+    const actualApi = service.getForecastByCoordinatesApi(coordinates).toLowerCase();
 
     expect(actualApi).toBe(expectedApi);
   });

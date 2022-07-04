@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ICoordinates } from '../models/iCoordinates';
 
 //
 // The API service is responsible for constructing the URLs that will connect to Web APIs
@@ -15,8 +16,8 @@ export class ApiService {
   private _openWeatherMapBaseApi: string = "https://openweathermap.org/data/2.5/weather";
   private _openWeatherMapKey: string  = "cf002751564a4c78f5f7ed479f1b9ba3";
 
-  public getWeatherForecastApi(latitude: string, longitude:string): string {
-    const params = `lat=${latitude}&lon=${longitude}&apiid=${this._openWeatherMapKey}`;
+  public getForecastByCoordinatesApi(coordinates: ICoordinates): string {
+    const params = `lat=${coordinates.latitude}&lon=${coordinates.longitude}&apiid=${this._openWeatherMapKey}`;
     const api = `${this._openWeatherMapBaseApi}?${params}`.toLowerCase();
     return api;
   }
