@@ -18,7 +18,12 @@ export class WeatherForecastService {
 
     return this.http.get<IWeatherForecast>(`${apiUrl}`).pipe(
       map(result => {
-        return result; 
+        const raw = <any> result;
+        const weather: IWeatherForecast = {
+          temperature: ((raw.main.temp - 273.15) / (5/9) + 32).toString(),
+          description: raw.weather[0].description
+        };
+        return weather; 
       })
     );
   }

@@ -1,4 +1,4 @@
 export interface IWeatherForecast {
-    prop1: string;
-    prop2: string;
+    temperature: string;
+    description: string;
 }

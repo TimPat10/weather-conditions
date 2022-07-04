@@ -1,1 +1,4 @@
-<p>weather-forecast works!</p>
+<h2>Current Weather Conditions</h2>
+
+<input type="text" id="txtCityState" name="txtCityState" [(ngModel)]="cityState">
+<button class="btn btn-primary" id="btnCityStateGo" (click)="getForecatsByCityState()">GO</button>

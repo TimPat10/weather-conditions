@@ -13,11 +13,11 @@ export class ApiService {
 
   //#region  APIs to get current weather conditions
 
-  private _openWeatherMapBaseApi: string = "https://openweathermap.org/data/2.5/weather";
+  private _openWeatherMapBaseApi: string = "https://api.openweathermap.org/data/2.5/weather";
   private _openWeatherMapKey: string  = "cf002751564a4c78f5f7ed479f1b9ba3";
 
   public getForecastByCoordinatesApi(coordinates: ICoordinates): string {
-    const params = `lat=${coordinates.latitude}&lon=${coordinates.longitude}&apiid=${this._openWeatherMapKey}`;
+    const params = `lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=${this._openWeatherMapKey}`;
     const api = `${this._openWeatherMapBaseApi}?${params}`.toLowerCase();
     return api;
   }

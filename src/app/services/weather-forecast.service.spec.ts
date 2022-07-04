@@ -13,13 +13,13 @@ describe('WeatherForecastService', () => {
   let httpTestingController: HttpTestingController;
   let returnedForecast: IWeatherForecast;
 
-  const api: string = "https://someWeatherForecast/api";
+  const api: string = "https://someCoordinate/api";
   const coordinates: ICoordinates = {
     latitude: "39.88963102486146",
     longitude: "-84.10662579008196"
   };
 
-  const expectedForecast: IWeatherForecast = { prop1: "78", prop2: "Sunny" };
+  const expectedForecast: IWeatherForecast = { temperature: "78", description: "Sunny" };
   const apiServiceSpy = jasmine.createSpyObj('ApiService', ['getForecastByCoordinatesApi']);
 
   beforeEach(() => {
@@ -52,7 +52,7 @@ describe('WeatherForecastService', () => {
     expect(req.request.method).toEqual("GET");
   });
 
-  it(`should return forecast of ${expectedForecast.prop1} degrees and ${expectedForecast.prop2} for latitude ${coordinates.latitude}, longitude ${coordinates.longitude}`, () => {
+  it(`should return forecast of ${expectedForecast.temperature} degrees and ${expectedForecast.description} for latitude ${coordinates.latitude}, longitude ${coordinates.longitude}`, () => {
     req.flush(expectedForecast);
     expect(returnedForecast).toEqual(expectedForecast);  
   });

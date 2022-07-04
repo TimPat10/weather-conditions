@@ -7,7 +7,7 @@ import { ApiService } from './api.service';
 describe('ApiService', () => {
   let service: ApiService;
 
-  const openWeatherMapBaseApi: string = "https://openweathermap.org/data/2.5/weather";
+  const openWeatherMapBaseApi: string = "https://api.openweathermap.org/data/2.5/weather";
   const openWeatherMapKey: string  = "cf002751564a4c78f5f7ed479f1b9ba3";
 
   const someLatLongBaseApi: string = "https://someLatitudeLongitudeApi";
@@ -25,7 +25,7 @@ describe('ApiService', () => {
     };
 
     
-    const params = `lat=${coordinates.latitude}&lon=${coordinates.longitude}&apiid=${openWeatherMapKey}`;
+    const params = `lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=${openWeatherMapKey}`;
     const expectedApi = `${openWeatherMapBaseApi}?${params}`.toLowerCase();
     const actualApi = service.getForecastByCoordinatesApi(coordinates).toLowerCase();
 
