@@ -15,6 +15,21 @@ Prepare the project:
 4. cd into the project home
     - npm install
 
+## Spin up the application
+
+1. Run `ng serve`
+2. In a browser, navigate to http://localhost:4200/
+3. Test data can be:
+    City, State: 
+        Tipp City, OH
+        St. Louis, MO
+    Zipcode: 
+        45371
+        63101
+    Latitude, Longitude:
+        39.890, -84.107
+        38.625, -90.187
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
