@@ -1,17 +1,18 @@
 <h2>Current Weather Conditions</h2>
-
-<input type="text" id="txtCityState" name="txtCityState" placeholder="city, state" [(ngModel)]="cityState">
-<button class="btn btn-primary" id="btnCityStateGo" (click)="getForecatsByCityState()">GO</button>
-<br>
-<input type="text" id="txtZipcode" name="txtZipcode" placeholder="zip code" [(ngModel)]="zipcode">
-<button class="btn btn-primary" id="btnZipcodeGo" (click)="getForecatsByZipcode()">GO</button>
-<br>
-<input type="text" id="txtCoordinates" name="txtCoordinates" placeholder="latitude, longitude" [(ngModel)]="coordinates">
-<button class="btn btn-primary" id="btnCoordinatesGo" (click)="getForecatsByCoordinates()">GO</button>
-<hr>
-<div id="conditionsResult">
+<form>
+    <input type="text" id="txtCityState" name="txtCityState" placeholder="city, state" (focus)="cityStateOnFocus()" [(ngModel)]="cityState">
+    <button class="btn btn-primary" id="btnCityStateGo" (click)="getForecatsByCityState()">GO</button>
+    <br>
+    <input type="text" id="txtZipcode" name="txtZipcode" placeholder="zip code" (focus)="zipcodeOnFocus()" [(ngModel)]="zipcode">
+    <button class="btn btn-primary" id="btnZipcodeGo" (click)="getForecatsByZipcode()">GO</button>
+    <br>
+    <input type="text" id="txtCoordinates" name="txtCoordinates" placeholder="latitude, longitude" (focus)="coordinatesOnFocus()" [(ngModel)]="coordinates">
+    <button class="btn btn-primary" id="btnCoordinatesGo" (click)="getForecatsByCoordinates()">GO</button>
+    <hr>
+</form>
+<div *ngIf="currentConditions">
     <label>Current temperature: &nbsp;</label>
-    {{currentConditions.temperature}}
+    {{currentConditions.temperature}}F
     <br>
     <label>Current conditions: &nbsp;</label>
     {{currentConditions.description}}

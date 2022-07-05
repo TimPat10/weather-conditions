@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ICoordinates } from 'src/app/models/iCoordinates';
-import { IWeatherCopnditions } from 'src/app/models/iWeather-conditions';
+import { IWeatherConditions } from 'src/app/models/iWeather-conditions';
 import { GeocodingService } from 'src/app/services/geocoding.service';
 import { WeatherConditionsService } from 'src/app/services/weather-conditions.service';
 
@@ -17,16 +17,15 @@ export class WeatherconditionsComponent implements OnInit {
   public cityState: string = "";
   public zipcode: string = "";
   public coordinates: string = "";
-  public currentConditions: IWeatherCopnditions = { temperature: "", description: "" };
+  public currentConditions: IWeatherConditions = { temperature: "", description: "" };
 
   constructor(
       private weatherconditionsService: WeatherConditionsService
     , private geocodingService: GeocodingService) { 
-    this.currentConditions = { temperature: "60", description: "Nice!" };
+      this.currentConditions = null as unknown as IWeatherConditions;
   }
 
   ngOnInit(): void {
-    this.currentConditions = { temperature: "60", description: "Nice!" };
   }
 
   public getForecatsByCityState() {
@@ -57,6 +56,24 @@ export class WeatherconditionsComponent implements OnInit {
 
     this.weatherconditionsService.getconditionsForCoordinates(coordinates).subscribe(result => {
       this.currentConditions = result;
-    })
+    });
+  }
+
+  public cityStateOnFocus() {
+    this.zipcode = "";
+    this.coordinates = "";
+    this.currentConditions = null as unknown as IWeatherConditions;
+  }
+
+  public zipcodeOnFocus() {
+    this.cityState = "";
+    this.coordinates = "";
+    this.currentConditions = null as unknown as IWeatherConditions;
+  }
+
+  public coordinatesOnFocus() {
+    this.cityState = "";
+    this.zipcode = "";
+    this.currentConditions = null as unknown as IWeatherConditions;
   }
 }

@@ -2,7 +2,7 @@ import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@an
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { ICoordinates } from 'src/app/models/iCoordinates';
-import { IWeatherCopnditions } from 'src/app/models/iWeather-conditions';
+import { IWeatherConditions } from 'src/app/models/iWeather-conditions';
 import { WeatherConditionsService } from 'src/app/services/weather-conditions.service';
 
 import { WeatherconditionsComponent } from './weather-conditions.component';
@@ -15,7 +15,7 @@ fdescribe('WeatherconditionsComponent', () => {
 
   let req: TestRequest;
   let httpTestingController: HttpTestingController;
-  let returnedconditions: IWeatherCopnditions;
+  let returnedconditions: IWeatherConditions;
 
   const api: string = "https://someWeatherconditions/api";
   const coordinates: ICoordinates = {
@@ -23,7 +23,7 @@ fdescribe('WeatherconditionsComponent', () => {
     longitude: "-84.10662579008196"
   };
 
-  const expectedconditions: IWeatherCopnditions = { temperature: "78", description: "Sunny" };
+  const expectedconditions: IWeatherConditions = { temperature: "78", description: "Sunny" };
   const weatherconditionsServiceSpy = jasmine.createSpyObj('WeatherconditionsService', ['getconditionsForCoordinates']);
 
   beforeEach(waitForAsync(() => {
